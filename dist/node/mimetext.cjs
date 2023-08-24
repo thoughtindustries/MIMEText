@@ -1,6 +1,6 @@
 'use strict';
 
-var node_os = require('node:os');
+var node_os = require('os');
 var mime = require('mime-types');
 
 function _interopNamespaceDefault(e) {
