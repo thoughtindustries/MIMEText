@@ -1,3 +1,4 @@
+import hasOwn from 'object.hasown';
 import { MIMETextError } from './MIMETextError.js';
 export class Mailbox {
     reSpecCompliantAddr = /(([^<>\r\n]+)\s)?<[^\r\n]+>/;
@@ -47,7 +48,7 @@ export class Mailbox {
         return typeof v === 'string' && this.reSpecCompliantAddr.test(v);
     }
     isMailboxAddrObject(v) {
-        return this.isObject(v) && Object.hasOwn(v, 'addr');
+        return this.isObject(v) && hasOwn(v, 'addr');
     }
     isObject(v) {
         return (!!v) && (v.constructor === Object);

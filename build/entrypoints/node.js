@@ -1,12 +1,13 @@
-import { EOL } from 'node:os';
+import { EOL } from 'os';
 import * as mime from 'mime-types';
 import { MIMEMessage } from '../MIMEMessage.js';
 const envctx = {
     toBase64: function toBase64(data) {
-        return (Buffer.from(data)).toString('base64');
+        return Buffer.from(data).toString('base64');
     },
     toBase64WebSafe: function toBase64WebSafe(data) {
-        return (Buffer.from(data)).toString('base64')
+        return Buffer.from(data)
+            .toString('base64')
             .replace(/\+/g, '-')
             .replace(/\//g, '_')
             .replace(/=+$/, '');

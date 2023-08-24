@@ -1,5 +1,7 @@
 import type {MailboxAddrObject, MailboxAddrText, MailboxType, Email} from 'mimetext'
 
+import hasOwn from 'object.hasown'
+
 import {MIMETextError} from './MIMETextError.js'
 
 export class Mailbox {
@@ -58,7 +60,7 @@ export class Mailbox {
     }
 
     isMailboxAddrObject(v: unknown): v is MailboxAddrObject {
-        return this.isObject(v) && Object.hasOwn(v, 'addr')
+        return this.isObject(v) && hasOwn(v, 'addr')
     }
 
     isObject(v: unknown): v is object {

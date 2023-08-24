@@ -1,3 +1,4 @@
+import hasOwn from 'object.hasown';
 import { MIMETextError } from './MIMETextError.js';
 import { Mailbox } from './Mailbox.js';
 /*
@@ -79,7 +80,7 @@ export class MIMEMessageHeader {
                 continue;
             if (!isValueDefinedByUser && typeof field.generator === 'function')
                 field.value = field.generator();
-            const strval = Object.hasOwn(field, 'dump') && typeof field.dump === 'function'
+            const strval = hasOwn(field, 'dump') && typeof field.dump === 'function'
                 ? field.dump(field.value)
                 : typeof field.value === 'string' ? field.value : '';
             lines += `${field.name}: ${strval}${this.envctx.eol}`;
@@ -148,7 +149,7 @@ export class MIMEMessageHeader {
         const validProps = ['name', 'value', 'dump', 'required', 'disabled', 'generator', 'custom'];
         if (this.isObject(v)) {
             const h = v;
-            if (Object.hasOwn(h, 'name') && typeof h.name === 'string' && h.name.length > 0) {
+            if (hasOwn(h, 'name') && typeof h.name === 'string' && h.name.length > 0) {
                 if (!Object.keys(h).some((prop) => !validProps.includes(prop))) {
                     return true;
                 }
